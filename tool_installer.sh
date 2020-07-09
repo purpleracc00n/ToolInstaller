@@ -100,13 +100,10 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "adXtract" ${white}
 	git clone https://github.com/LordNem/adXtract 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "CombineHarvester" ${white}
 	git clone https://github.com/LordNem/CombineHarvester.git 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "Empire" ${white}
-	git clone https://github.com/BC-SECURITY/Empire 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "Empire" ${white}
+	sudo apt-get -y install powershell-empire 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "DeathStar" ${white}	
 	git clone https://github.com/byt3bl33d3r/DeathStar.git 1> /dev/null
-echo -e ${green} "[+]" ${white} "Installing" ${red} "Empire" ${white}
-	cd Empire/setup && sudo ./install.sh 1> /dev/null
-	cd ../..
 echo -e ${green} "[+]" ${white} "Installing" ${red} "DeathStar" ${white}
 	cd DeathStar
 	sudo pip3 install -r requirements.txt 1> /dev/null
@@ -196,6 +193,7 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "r00kie-kr00kie" ${white}
 	git clone https://github.com/hexway/r00kie-kr00kie.git
 	cd ./r00kie-kr00kie
 	sudo pip3 install -r requirements.txt
+	cd ..
 
 ### VPN
 echo -e ${blue} "[*]" ${white} "------------------Preparing VPN tools------------------" ${white}
