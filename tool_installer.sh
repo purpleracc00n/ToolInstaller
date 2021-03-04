@@ -14,15 +14,12 @@ ToolInstaller(){
 echo -e ${blue} "[*]" ${white} "------------------Preparing essentials------------------" ${white}
 echo -e ${green} "[+]" ${white} "Installing" ${red} "pip, pip3, and dependencies" ${white}
 	sudo apt-get -y install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential 1> /dev/null
-	sudo apt-get -y install python-pip 1> /dev/null
-	sudo apt-get -y install python3-pip 1> /dev/null
 	sudo python3 -m pip install --upgrade pip 1> /dev/null
-	sudo python3 -m pip install --upgrade pwntools 1> /dev/null
 	sudo pip3 install --upgrade pip 1> /dev/null
+	sudo pip3 install pwntools 1> /dev/null
 	sudo pip3 install impacket 1> /dev/null
 	sudo pip3 install pyasn1 1> /dev/null
-	sudo pip install --user asn1crypto 1> /dev/null
-	sudo pip install asn1crypto 1> /dev/null
+	sudo pip3 install asn1crypto 1> /dev/null
 	
 	
 echo -e ${green} "[+]" ${white} "Installing" ${red} "npm" ${white}
@@ -51,13 +48,20 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "Shodan" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "twint" ${white}	
 	git clone https://github.com/twintproject/twint.git 1> /dev/null
 	cd twint
-	pip3 install . -r requirements.txt 1> /dev/null
+	pip3 install . -r "requirements.txt" 1> /dev/null
 	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "theHarvester" ${white}	
 	git clone https://github.com/laramies/theHarvester 1> /dev/null
 	cd theHarvester
-	python3 -m pip install -r requirements/base.txt 1> /dev/null
+	python3 -m pip install -r "requirements/base.txt" 1> /dev/null
 	cd ../
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "pwdlogy" ${white}		
+	git clone https://github.com/tch1001/pwdlogy 1> /dev/null
+	
+### Office365
+echo -e ${blue} "[*]" ${white} "------------------Preparing Office365 tools------------------" ${white}
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "o365enum" ${white}
+	git clone https://github.com/gremwell/o365enum 1> /dev/null
 
 ### PasswordCracking
 echo -e ${blue} "[*]" ${white} "------------------Preparing Password Cracking tools------------------" ${white}
@@ -87,13 +91,13 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "testssl" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "RsaCtfTool" ${white}
 	git clone https://github.com/Ganapati/RsaCtfTool.git 1> /dev/null
 	cd RsaCtfTool
-	pwd
-	ls -la
 	sudo apt-get -y install libgmp3-dev libmpc-dev python3-venv 1> /dev/null
-	python3 -m venv .
+	sudo python3 -m venv .
 	. bin/activate
-	sudo pip3 install -r "requirements.txt"
-	cd ../
+	sudo pip3 install -r "requirements.txt" 1> /dev/null
+	cd ..
+echo -e ${green} "[+]" ${white} "Installing" ${red} "Ciphey" ${white}	
+	sudo python3 -m pip install ciphey --upgrade 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "NetNTLM-Hashcat" ${white}
 	git clone https://github.com/ins1gn1a/NetNTLM-Hashcat.git 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "sslstrip" ${white}
@@ -126,7 +130,7 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "gobuster" ${white}
 echo -e ${green} "[+]" ${white} "Installing" ${red} "bruteforce-http-auth" ${white}
 	git clone https://github.com/erforschr/bruteforce-http-auth 1> /dev/null
 	cd bruteforce-http-auth
-	sudo pip3 install requirements.txt
+	sudo pip3 install "requirements.txt"
 	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "BlindElephant" ${white}
 	git clone https://github.com/lokifer/BlindElephant 1> /dev/null # Web App fingerprinter
@@ -137,17 +141,18 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "jwt-cracker" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "viewgen" ${white} # rce through ASP viewgen
 	git clone https://github.com/0xACB/viewgen 1> /dev/null
 	cd viewgen
-	sudo pip3 install --upgrade -r requirements.txt
+	sudo pip3 install --upgrade -r "requirements.txt" 1> /dev/null
 	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "fuxploider" ${white}
 	git clone https://github.com/almandin/fuxploider.git 1> /dev/null
 	cd fuxploider
-	pip3 install -r requirements.txt 1> /dev/null
+	pip3 install -r "requirements.txt" 1> /dev/null
+	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "webshell" ${white}	
 	git clone https://github.com/tennc/webshell 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "LFISuite" ${white}	
 	git clone https://github.com/D35m0nd142/LFISuite 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "lfimap" ${white}	
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "fimap" ${white}	
 	git clone https://github.com/kurobeats/fimap 1> /dev/null
 	sudo pip install httplib2 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "FavFreak" ${white}
@@ -159,7 +164,8 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "XXEinjector" ${white}
 ### Databases
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "NoSQLMap" ${white}
 	git clone https://github.com/codingo/NoSQLMap 1> /dev/null
-	cd NoSQLMap && sudo python2 setup.py install 1> /dev/null 
+	cd NoSQLMap 
+	sudo python2 setup.py install 1> /dev/null 
 	cd ../
 echo -e ${green} "[+]" ${white} "Installing" ${red} "ElasticSearch-Dump" ${white}
 	sudo npm install elasticdump 1> /dev/null
@@ -178,16 +184,6 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "odat" ${white}
 echo -e ${blue} "[*]" ${white} "------------------Preparing Windows and AD tools------------------" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "adXtract" ${white}
 	git clone https://github.com/LordNem/adXtract 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "CombineHarvester" ${white}
-	git clone https://github.com/LordNem/CombineHarvester.git 1> /dev/null
-echo -e ${green} "[+]" ${white} "Installing" ${red} "Empire" ${white}
-	sudo apt-get -y install powershell-empire 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "DeathStar" ${white}	
-	git clone https://github.com/byt3bl33d3r/DeathStar.git 1> /dev/null
-echo -e ${green} "[+]" ${white} "Installing" ${red} "DeathStar" ${white}
-	cd DeathStar
-	sudo pip3 install -r requirements.txt 1> /dev/null
-	cd ..
 echo -e ${green} "[+]" ${white} "Installing" ${red} "Responder" ${white}
 	sudo apt-get -y install responder 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "Impacket" ${white}
@@ -207,17 +203,32 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "powercat" ${white}
 	sudo apt-get -y install powercat 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "kerberoast" ${white}
 	sudo apt-get -y install kerberoast 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "Windows SysInternals Suite" ${white}	
-	wget https://download.sysinternals.com/files/SysinternalsSuite.zip 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "PrivExchange" ${white}	
 	git clone https://github.com/dirkjanm/privexchange/ 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "peas" ${white}	
+	git clone https://github.com/FSecureLABS/peas 1> /dev/null
+	cd peas
+	python setup.py install 1> /dev/null
+	cd ../
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "lyncsmash" ${white}		
+	git clone https://github.com/nyxgeek/lyncsmash
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "WinSCP" ${white}
 	wget https://winscp.net/download/WinSCP-5.17.6-Portable.zip 1> /dev/null # As ftp.exe is garbage on Windows, use WinSCP.exe
 	unzip WinSCP-5.17.6-Portable.zip 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "Nishang" ${white}	
+	git clone https://github.com/samratashok/nishang 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "SharpGPOAbuse" ${white}	
+	git clone https://github.com/FSecureLABS/SharpGPOAbuse 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "pyGPOAbuse" ${white}	
+	git clone https://github.com/Hackndo/pyGPOAbuse 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "ADACLScanner" ${white}	
+	git clone https://github.com/canix1/ADACLScanner 1> /dev/null
+
+
 	
 
 ### Privesc scripts - Windows
-echo -e ${blue} "[*]" ${white} "------------------Preparing Windows Privilege Escalation scripts------------------" ${white}
+echo -e ${blue} "[*]" ${white} "------------------Preparing Windows Privilege Escalation enumeration scripts------------------" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "PowerSploit" ${white}
 	git clone https://github.com/PowerShellMafia/PowerSploit 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "PEAS - privilege escalation awesome scripts suite" ${white}
@@ -234,14 +245,15 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "windows-exploit-suggester"
 	git clone https://github.com/AonCyberLabs/Windows-Exploit-Suggester 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "windows-exploit-suggester-ng" ${white}
 	git clone https://github.com/bitsadmin/wesng 1> /dev/null
-	cd wesng && sudo python2 setup.py build 1> /dev/null
+	cd wesng
+	sudo python2 setup.py build 1> /dev/null
 	sudo python2 setup.py install 1> /dev/null
 	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "windowsprivchecker" ${white}	
 	git clone https://github.com/Tib3rius/windowsprivchecker 1> /dev/null
 
 ### Privesc scripts - Linux
-echo -e ${blue} "[*]" ${white} "------------------Preparing Linux Privilege Escalation scripts------------------" ${white}
+echo -e ${blue} "[*]" ${white} "------------------Preparing Linux Privilege Escalation enumeration scripts------------------" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "LSE - linux smart enumeration" ${white}
 	git clone https://github.com/diego-treitos/linux-smart-enumeration 1>/dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "LinEnum" ${white}
@@ -249,23 +261,33 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "LinEnum" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "pspy" ${white}
 	wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 1> /dev/null
 	wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "linux-exploit-suggester" ${white}	
+	wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh
 
 ### Privesc exploits - Windows
+echo -e ${blue} "[*]" ${white} "------------------Preparing Windows Privilege Escalation exploits------------------" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "Juicy Potato" ${white}
 	git clone https://github.com/ohpe/juicy-potato 1>/dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "RogueWinRM" ${white}
 	git clone https://github.com/antonioCoco/RogueWinRM 1>/dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "Rogue Potato" ${white}
 	git clone https://github.com/antonioCoco/RoguePotato 1>/dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "Windows-Kernel-Exploits" ${white}
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "windows-kernel-exploits" ${white}
 	git clone https://github.com/SecWiki/windows-kernel-exploits 1>/dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "Ghostpack-CompiledBinaries" ${white}
 	git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries 1>/dev/null
 	
 ### Privesc exploits - Linux
+echo -e ${blue} "[*]" ${white} "------------------Preparing Linux Privilege Escalation exploits------------------" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "linux-kernel-exploits" ${white}
 	git clone https://github.com/SecWiki/linux-kernel-exploits 1> /dev/null
 
+
+### Post exploitation
+echo -e ${blue} "[*]" ${white} "------------------Preparing Post Exploitation tools------------------" ${white}
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "pupy" ${white}
+	git clone https://github.com/n1nj4sec/pupy/ 1> /dev/null
+	
 ### Networking
 echo -e ${blue} "[*]" ${white} "------------------Preparing Networking & Protocol specific tools------------------" ${white}
 echo -e ${green} "[+]" ${white} "Downloading & Installing" ${red} "bettercap" ${white}
@@ -274,7 +296,9 @@ echo -e ${green} "[+]" ${white} "Downloading & Installing" ${red} "bettercap" ${
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "routersploit" ${white}
 	git clone https://github.com/reverse-shell/routersploit.git 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "routersploit" ${white}
-	cd routersploit && sudo python3 -m pip install -r requirements.txt 1> /dev/null && cd ..
+	cd routersploit
+	sudo python3 -m pip install -r "requirements.txt" 1> /dev/null
+	cd ..
 echo -e ${green} "[+]" ${white} "Installing" ${red} "dsniff" ${white}
 	sudo apt-get -y install dsniff 1> /dev/null # for macof
 echo -e ${green} "[+]" ${white} "Installing" ${red} "yersinia" ${white}
@@ -306,7 +330,7 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "ntpdate" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "ssh-user-enumeration" ${white}	
 	git clone https://github.com/BlackDiverX/ssh-user-enumeration 1> /dev/null
 	cd ssh-user-enumeration
-	sudo pip install -r ssh-user-enumeration/requirements.txt 1> /dev/null
+	sudo pip install -r "ssh-user-enumeration/requirements.txt" 1> /dev/null
 	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "nmapAutomator" ${white}		
 	git clone https://github.com/21y4d/nmapAutomator 1> /dev/null
@@ -355,9 +379,9 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "tessaract" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "snmpwn" ${white}
 	git clone https://github.com/hatlord/snmpwn 1> /dev/null
 	cd snmpwn/
-	sudo gem install bundler
-	sudo bundle install
-	sudo gem install tty-command tty-spinner optimist colorize
+	sudo gem install bundler 1> /dev/null
+	sudo bundle install 1> /dev/null
+	sudo gem install tty-command tty-spinner optimist colorize 1> /dev/null
 	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "mysmb.py - MS17-010 dependancy (https://www.exploit-db.com/exploits/42315)" ${white}
 	wget https://raw.githubusercontent.com/worawit/MS17-010/master/mysmb.py 1> /dev/null
@@ -408,7 +432,7 @@ elif [[ $action == "U" || $action == "u" || $prompt == "Update" || $prompt == "u
 	if [[ "$current_user" != "root" ]]; then
 		echo -e ${green} "[Info]" ${yellow} "An example is "${white} "/home/$current_user/MyTools/Installed/" ${red}
 	fi
-	read -e  tools
+	read -e tools
 	while [ ! -d $tools ]; do
 		echo -e ${red} "[-]" ${white} "Invalid/Inaccessible path, try again"
 		read -e tools
@@ -457,5 +481,18 @@ sudo apt autoremove
 
 
 
-# other stuff to add 
-# tool for .NET C# and VB decompilation / reverse engineering: dnSpy - download from Softpedia
+# Download on Windows
+# - dnSpy
+# - powercat
+# - putty
+# - mimikatz
+# - ADModule
+# - PowerView
+# - hashcat
+# - SysInternals
+# - BloodHound
+# - WinSCP
+# - o365recon https://github.com/nyxgeek/o365recon
+# - MailSniper https://github.com/dafthack/MailSniper
+# - ruler https://github.com/sensepost/ruler
+# - LaZagne https://github.com/AlessandroZ/LaZagne
