@@ -38,32 +38,85 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "mono-complete" ${white}
 	sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 	#echo "alias nuget=\"mono /usr/local/bin/nuget.exe\"" > /home/$(whoami)/.bash_aliases
 	#nuget update -self
+	
+	
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "SecurityTips" ${white}	
+	git clone https://github.com/hackerscrolls/SecurityTips 1> /dev/null
 
 
-
-### OSINT
-echo -e ${blue} "[*]" ${white} "------------------Preparing OSINT tools------------------" ${white}
+### OSINT/Recon/Enum
+echo -e ${blue} "[*]" ${white} "------------------Preparing OSINT/Recon/Enum tools------------------" ${white}
 echo -e ${green} "[+]" ${white} "Installing" ${red} "Shodan" ${white}
 	sudo pip3 install shodan 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "Sublist3r" ${white}
+	sudo apt-get -y install sublist3r 1>/dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "Sn1per" ${white}	
+	git clone https://github.com/1N3/Sn1per 1> /dev/null
+	cd Sn1per
+	sudo bash ./install.sh 1> /dev/null
+	cd ../
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "Osmedeus" ${white}
+	git clone https://github.com/j3ssie/Osmedeus 1> /dev/null
+	cd Osmedeus
+	sudo bash ./install.sh 1> /dev/null
+	cd ../
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "twint" ${white}	
 	git clone https://github.com/twintproject/twint.git 1> /dev/null
 	cd twint
 	pip3 install . -r "requirements.txt" 1> /dev/null
 	cd ../
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "theHarvester" ${white}	
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "git-hound" ${white}	
+	wget https://github.com/tillson/git-hound/releases/latest/download/git-hound_1.3_Linux_x86_64.tar.gz 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "truffleHog" ${white}	
+	sudo pip3 install truffleHog 1>/dev/null 
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "theHarvester" ${white}
 	git clone https://github.com/laramies/theHarvester 1> /dev/null
 	cd theHarvester
 	python3 -m pip install -r "requirements/base.txt" 1> /dev/null
 	cd ../
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "pwdlogy" ${white}		
+echo -e ${green} "[+]" ${white} "Installing" ${red} "dnstwist" ${white}
+	sudo apt-get install -y dnstwist 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "altdns" ${white}	
+	pip3 install py-altdns 1> /dev/null
+	git clone https://github.com/infosec-au/altdns 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "dnmasscan" ${white}
+	git clone https://github.com/rastating/dnmasscan 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "RustScan" ${white}
+	wget https://github.com/RustScan/RustScan/releases/latest/download/rustscan_2.0.1_amd64.deb 1> /dev/null
+	sudo dpkg -i rustscan_2.0.1_amd64.deb 1> /dev/null
+	rm rustscan_2.0.1_amd64.deb
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "pwdlogy" ${white}
 	git clone https://github.com/tch1001/pwdlogy 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "linkedin2username" ${white}		
+	git clone https://github.com/initstring/linkedin2username 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "sherlock" ${white}			
+	sudo apt-get -y install sherlock 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "AWSBucketDump" ${white}			
+	git clone https://github.com/jordanpotti/AWSBucketDump 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "CloudBrute" ${white}				
+	wget https://github.com/0xsha/CloudBrute/releases/latest/download/cloudbrute_1.0.7_Linux_x86_64.tar.gz 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "pwndb" ${white}
+	git clone https://github.com/davidtavarez/pwndb 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "h8mail" ${white}			
+	pip3 install h8mail 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "gau (getallurls)" ${white}			
+	wget https://github.com/lc/gau/releases/latest/download/gau_1.2.0_linux_amd64.tar.gz 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "Goohak" ${white}				
+	git clone https://github.com/1N3/Goohak 1> /dev/null
 	
-### Office365
+### Phishing
+echo -e ${blue} "[*]" ${white} "------------------Preparing Phishing tools------------------" ${white}
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "fakemeeting" ${white}			
+	git clone https://github.com/ExAndroidDev/fakemeeting 1> /dev/null
+
+### External - Office365/Exchange
 echo -e ${blue} "[*]" ${white} "------------------Preparing Office365 tools------------------" ${white}
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "o365enum" ${white}
 	git clone https://github.com/gremwell/o365enum 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "ROADtools" ${white}
+	pip install roadrecon 1> /dev/null
 
-### PasswordCracking
+### PasswordAttacks
 echo -e ${blue} "[*]" ${white} "------------------Preparing Password Cracking tools------------------" ${white}
 echo -e ${green} "[+]" ${white} "Installing" ${red} "Hashcat" ${white}
 	sudo apt-get -y install -y ocl-icd-libopencl1 nvidia-driver nvidia-cuda-toolkit 1> /dev/null
@@ -73,6 +126,8 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "eapmd5pass" ${white}
 	sudo apt-get -y install eapmd5pass 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "msoffcrypto-tool" ${white}
 	sudo pip3 install msoffcrypto-tool 1> /dev/null # crack MS Office encrypted files
+echo -e ${green} "[+]" ${white} "Installing" ${red} "brutespray" ${white}	
+	sudo apt-get -y install brutespray 1> /dev/null
 
 ### Wordlists
 
@@ -98,8 +153,6 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "RsaCtfTool" ${white}
 	cd ..
 echo -e ${green} "[+]" ${white} "Installing" ${red} "Ciphey" ${white}	
 	sudo python3 -m pip install ciphey --upgrade 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "NetNTLM-Hashcat" ${white}
-	git clone https://github.com/ins1gn1a/NetNTLM-Hashcat.git 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "sslstrip" ${white}
 	sudo apt-get -y install sslstrip 1> /dev/null
 
@@ -112,13 +165,16 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "SMTP-user-enum" ${white}
 
 ### Web
 echo -e ${blue} "[*]" ${white} "------------------Preparing Web related tools------------------" ${white}
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "CMSMap" ${white}
-	git clone https://github.com/Dionach/CMSmap.git 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "Fingerprinter" ${white}
 	git clone https://github.com/erwanlr/Fingerprinter 1> /dev/null
 	sudo gem install bundler 1> /dev/null
 	cd Fingerprinter && bundle install 1> /dev/null
 	cd ../
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "EyeWitness" ${white}	
+	git clone https://github.com/FortyNorthSecurity/EyeWitness 1> /dev/null
+	cd EyeWitness/setup
+	sudo ./setup.sh 1> /dev/null
+	cd ../../
 echo -e ${green} "[+]" ${white} "Installing" ${red} "WPscan" ${white}
 	sudo apt-get -y install wpscan 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "Nikto" ${white}
@@ -127,15 +183,13 @@ echo -e ${green} "[+]" ${white} "Installing" ${red} "API_Fuzzer" ${white}
 	sudo gem install API_Fuzzer 1> /dev/null
 echo -e ${green} "[+]" ${white} "Installing" ${red} "gobuster" ${white}
 	sudo apt-get -y install gobuster 1> /dev/null
+echo -e ${green} "[+]" ${white} "Installing" ${red} "feroxbuster" ${white}	
+	sudo apt-get -y install feroxbuster
 echo -e ${green} "[+]" ${white} "Installing" ${red} "bruteforce-http-auth" ${white}
 	git clone https://github.com/erforschr/bruteforce-http-auth 1> /dev/null
 	cd bruteforce-http-auth
 	sudo pip3 install "requirements.txt"
 	cd ../
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "BlindElephant" ${white}
-	git clone https://github.com/lokifer/BlindElephant 1> /dev/null # Web App fingerprinter
-	cd BlindElephant/src && sudo python setup.py install 1> /dev/null
-	cd ../../
 echo -e ${green} "[+]" ${white} "Installing" ${red} "jwt-cracker" ${white}
 	sudo npm install --global jwt-cracker 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "viewgen" ${white} # rce through ASP viewgen
@@ -152,12 +206,6 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "webshell" ${white}
 	git clone https://github.com/tennc/webshell 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "LFISuite" ${white}	
 	git clone https://github.com/D35m0nd142/LFISuite 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "fimap" ${white}	
-	git clone https://github.com/kurobeats/fimap 1> /dev/null
-	sudo pip install httplib2 1> /dev/null
-echo -e ${green} "[+]" ${white} "Downloading" ${red} "FavFreak" ${white}
-	git clone https://github.com/devanshbatham/FavFreak 1> /dev/null
-	sudo python3 -m pip install mmh3 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "XXEinjector" ${white}	
 	git clone https://github.com/enjoiz/XXEinjector 1> /dev/null
 
@@ -223,9 +271,9 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "pyGPOAbuse" ${white}
 	git clone https://github.com/Hackndo/pyGPOAbuse 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "ADACLScanner" ${white}	
 	git clone https://github.com/canix1/ADACLScanner 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "enum4linux-ng" ${white}	
+	git clone https://github.com/cddmp/enum4linux-ng 1> /dev/null
 
-
-	
 
 ### Privesc scripts - Windows
 echo -e ${blue} "[*]" ${white} "------------------Preparing Windows Privilege Escalation enumeration scripts------------------" ${white}
@@ -263,6 +311,10 @@ echo -e ${green} "[+]" ${white} "Downloading" ${red} "pspy" ${white}
 	wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32 1> /dev/null
 echo -e ${green} "[+]" ${white} "Downloading" ${red} "linux-exploit-suggester" ${white}	
 	wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "PrivescCheck" ${white}		
+	git clone https://github.com/itm4n/PrivescCheck 1> /dev/null
+echo -e ${green} "[+]" ${white} "Downloading" ${red} "mimipenguin" ${white}
+	git clone https://github.com/huntergregal/mimipenguin 1> /dev/null
 
 ### Privesc exploits - Windows
 echo -e ${blue} "[*]" ${white} "------------------Preparing Windows Privilege Escalation exploits------------------" ${white}
@@ -493,6 +545,10 @@ sudo apt autoremove
 # - BloodHound
 # - WinSCP
 # - o365recon https://github.com/nyxgeek/o365recon
+# - ADRecon https://github.com/adrecon/ADRecon
+# - Pwdlyzer https://github.com/ins1gn1a/pwdlyser
 # - MailSniper https://github.com/dafthack/MailSniper
 # - ruler https://github.com/sensepost/ruler
-# - LaZagne https://github.com/AlessandroZ/LaZagne
+# - LaZagne - get the binary from releases https://github.com/AlessandroZ/LaZagne
+# - Covenant C2 https://github.com/cobbr/Covenant
+# - backstab - get the binary from releases https://github.com/Yaxser/Backstab
